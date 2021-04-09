@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { StoreModule } from './store/store.module';
 
@@ -29,11 +27,6 @@ import { StoreModule } from './store/store.module';
         tracing: true,  
     }),
     StoreModule
-    
-    
-
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
