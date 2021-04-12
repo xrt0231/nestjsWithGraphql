@@ -3,10 +3,10 @@ import { StoreService } from './store.service';
 
 @Controller('store')
 export class StoreController {
-    constructor(private readonly storeService: StoreService) {}
+  constructor(private readonly storeService: StoreService) {}
 
-    @Get()
-    async stores() {
-        return this.storeService.getStores();
-    }
+  @Get()
+  async stores() {
+    return this.storeService.getStores();
+  }
 }

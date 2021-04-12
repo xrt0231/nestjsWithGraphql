@@ -5,13 +5,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { StoreModule } from './store/store.module';
 
-
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..', 'public'),
-    // exclude: ['/api*'],
-  }),
+      rootPath: join(__dirname, '..', 'public'),
+      // exclude: ['/api*'],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -23,10 +22,10 @@ import { StoreModule } from './store/store.module';
       synchronize: true,
     }),
     GraphQLModule.forRoot({
-        autoSchemaFile: 'src/schema.graphql',    
-        tracing: true,  
+      autoSchemaFile: 'src/schema.graphql',
+      tracing: true,
     }),
-    StoreModule
+    StoreModule,
   ],
 })
 export class AppModule {}

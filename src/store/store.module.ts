@@ -5,10 +5,9 @@ import { StoreService } from './store.service';
 import { StoreResolver } from './store.resolver';
 import { StoreController } from './store.controller';
 
-
 @Module({
   imports: [TypeOrmModule.forFeature([Store])],
   providers: [StoreService, StoreResolver],
-  controllers: [StoreController]
+  controllers: [StoreController],
 })
 export class StoreModule {}

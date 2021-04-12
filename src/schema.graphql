@@ -16,6 +16,8 @@ type Query {
 
 type Mutation {
   createStore(input: StoreCreateInput!): Store!
+  updateStore(area: String!, size: Float!, name: String!, id: ID!): Store!
+  deleteStore(id: ID!): [Store!]!
 }
 
 input StoreCreateInput {

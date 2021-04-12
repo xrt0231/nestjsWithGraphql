@@ -6,27 +6,33 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class StoreService {
-    constructor(
-        @InjectRepository(Store) private storeRepository: Repository<Store>,
-    ) {}
+  constructor(
+    @InjectRepository(Store) private storeRepository: Repository<Store>,
+  ) {}
 
-    async getStores(): Promise<Store[]> {
-        return this.storeRepository.find();
-    }
+  //To get all stores data from DB
+  async getStores(): Promise<Store[]> {
+    return this.storeRepository.find();
+  }
 
-    async getStoreById(id: string): Promise<Store> {
-        return this.storeRepository.findOne({ where: { id }} )
-    }
+  //To get one store data by store id from DB
+  async getStoreById(id: string): Promise<Store> {
+    return this.storeRepository.findOne({ where: { id } });
+  }
 
-    async createStore(input: StoreCreateInput): Promise<Store> {
-        return this.storeRepository.save(input);
-    }
+  //To create one store data for DB
+  async createStore(input: StoreCreateInput): Promise<Store> {
+    return this.storeRepository.save(input);
+  }
 
-    // async updateStore(store: Store) {
-    //     this.storeRepository.save(store)
-    // }
+  //To update one store data from DB
+  async updateStore(id: string, data: any): Promise<Store> {
+    await this.storeRepository.update({ id }, data);
+    return this.storeRepository.findOne({ id });
+  }
 
-    // async deleteStore(store: Store) {
-    //     this.storeRepository.delete(store);
-    // }
+  //To delete one store data by store id form DB
+  async deleteStoreById(id: string): Promise<any> {
+    await this.storeRepository.delete({ id });
+  }
 }
