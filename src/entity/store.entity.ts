@@ -1,5 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Franchise } from './franchise.entity';
 
+//Create Store table
 @Entity()
 export class Store extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -13,4 +15,7 @@ export class Store extends BaseEntity {
 
   @Column({ nullable: true, comment: '地區' })
   area: string;
+
+  @ManyToOne(() => Franchise, (item) => item.stores)
+  franchise: Franchise;
 }

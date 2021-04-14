@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { FranchiseModel } from './franchise.model';
 
 @ObjectType('Store')
 export class StoreModel {
@@ -10,4 +11,6 @@ export class StoreModel {
   size: number;
   @Field({ nullable: true })
   area: string;
+  @Field(() => FranchiseModel, { nullable: true })
+  franchise: FranchiseModel;
 }

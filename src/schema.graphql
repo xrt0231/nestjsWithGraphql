@@ -2,11 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Franchise {
+  id: String!
+  category: String!
+}
+
 type Store {
   id: String!
   name: String!
   size: Int!
   area: String
+  franchise: Franchise
 }
 
 type Query {
@@ -16,8 +22,9 @@ type Query {
 
 type Mutation {
   createStore(input: StoreCreateInput!): Store!
-  updateStore(area: String!, size: Float!, name: String!, id: ID!): Store!
+  updateStore(input: StoreUpdateInput!, id: ID!): Store!
   deleteStore(id: ID!): [Store!]!
+  createFranchise(data: FranchiseInput!): Franchise!
 }
 
 input StoreCreateInput {
@@ -26,4 +33,18 @@ input StoreCreateInput {
 
   """地區"""
   area: String
+  franchise: ID!
+}
+
+input StoreUpdateInput {
+  name: String
+  size: Int
+
+  """地區"""
+  area: String
+  franchise: ID!
+}
+
+input FranchiseInput {
+  category: String!
 }

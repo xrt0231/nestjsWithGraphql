@@ -4,6 +4,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { StoreModule } from './store/store.module';
+import { FranchiseService } from './franchise/franchise.service';
+import { FranchiseModule } from './franchise/franchise.module';
 
 @Module({
   imports: [
@@ -26,6 +28,7 @@ import { StoreModule } from './store/store.module';
       tracing: true,
     }),
     StoreModule,
+    FranchiseModule,
   ],
 })
 export class AppModule {}
